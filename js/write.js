@@ -1,4 +1,5 @@
- var write = document.querySelector(".popup");
+
+var write = document.querySelector(".popup");
     var popup = document.querySelector(".modal");
     var close = document.querySelector(".modal-close");
 

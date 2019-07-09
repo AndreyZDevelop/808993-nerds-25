@@ -1,7 +1,7 @@
 body {
   margin: 0;
 
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', Arial, sans-serif;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -176,6 +176,7 @@ input[type="radio"].visually-hidden {
   position: relative;
 
   display: inline-block;
+  vertical-align: top;
   width: 18px;
   height: 18px;
   padding: 8px;
@@ -398,11 +399,12 @@ input[type="radio"].visually-hidden {
   line-height: 18px;
   font-weight: 500;
   text-transform: uppercase;
-
   color: #ffffff;
 
   border: none;
   border-radius: 2px;
+
+  text-align: center;
 }
 
 .features-button-red {
@@ -615,10 +617,6 @@ input[type="radio"].visually-hidden {
   opacity: 0.1;
 }
 
-iframe {
-  width: 100%;
-}
-
 .main-footer {
   display: flex;
   padding: 65px 0;
@@ -748,11 +746,14 @@ iframe {
 }
 
 .filter .button:hover,
-.filter .button:focus {
+.filter .button:focus,
+.page-list .button:hover,
+.page-list .button:focus {
   background-color: #dfdfdf;
 }
 
-.filter .button:active {
+.filter .button:active,
+.page-list .button:active {
   background-color: #d5d5d5;
 
   border: 2px solid #bfbfbf;
@@ -839,6 +840,7 @@ iframe {
 
 .price-controls label {
   display: inline-block;
+  vertical-align: top;
 
   width: 50%;
 
@@ -888,7 +890,7 @@ iframe {
   opacity: 0.5;
 }
 
-.filter-input-checkbox + label:hover:before {
+.filter-input-checkbox:focus + label::before {
   opacity: 1;
 }
 
@@ -897,6 +899,11 @@ iframe {
   height: 25px;
 
   background-image: url("../img/checkbox-on.svg");
+}
+
+.filter-input-checkbox + label:hover:before,
+.filter-input-checkbox + label:focus:before {
+  opacity: 1;
 }
 
 .filter-input-radio + label::before {
@@ -917,6 +924,10 @@ iframe {
   border: 4px solid #4d4d4d;
 }
 
+.filter-input-radio:focus + label::before {
+   border: 4px solid #4d4d4d;
+}
+
 .filter-input-radio:checked + label::after {
   content: "";
   position: absolute;
@@ -929,6 +940,10 @@ iframe {
   border-radius: 50%;
   background-color: #a6a6a6;
 }
+
+ .filter-input-radio:focus:checked + label::after {
+  background-color: #4d4d4d;
+ }
 
 .filter-input-radio:checked + label:hover:after {
   background-color: #4d4d4d;
@@ -999,13 +1014,20 @@ iframe {
   position: relative;
 
   font-size: 0;
+
+  opacity: 0.2;
 }
 
 .icon-item-up:hover,
 .icon-item-up:focus,
 .icon-item-down:hover,
 .icon-item-down:focus {
-  opacity: 0.2;
+  opacity: 0.5;
+}
+
+.icon-item-up:active,
+.icon-item-down:active {
+  opacity: 1;
 }
 
 .icon-item-down::before {
@@ -1028,9 +1050,15 @@ iframe {
   width: 11px;
   height: 10px;
 
-  opacity: 0.5;
+  
 
-  background-image: url("../img/icon-up-dir.svg");
+  background-image: url("../img/icon-down-dir.svg");
+
+  transform: rotate(180deg);
+}
+
+.click {
+  opacity: 1;
 }
 
 .catalog-list {
@@ -1129,7 +1157,8 @@ iframe {
   background-color: #eeeeee;
 }
 
-.details header {
+.details a {
+  display: block;
   margin-bottom: 35px;
   font-size: 18px;
   line-height: 30px;
@@ -1199,6 +1228,8 @@ iframe {
 
 
 .modal {
+  font-family: Roboto;
+
   display: none;
   position: fixed;
   top: 200px;
@@ -1227,9 +1258,18 @@ iframe {
   color: #444444;
 }
 
+@keyframes snake {
+  0%, 100% {transform: translateX(0);}
+  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
+  20%, 40%, 60%, 80% {transform: translateX(10px);}
+}
+
 .modal-error {
   border: 2px solid #e74246;
   color: #e74246;
+
+  animation-name: snake;
+  animation-duration: 0.6s;
 }
 
 .modal h2 {
@@ -1304,10 +1344,47 @@ iframe {
   font: inherit;
 }
 
+.write-name::placeholder,
+.write-email::placeholder {
+  color: #444444;
+
+  opacity: 0.5;
+}
+
+.write-name:focus::placeholder,
+.write-email:focus::placeholder,
+.input-comment:focus::placeholder {
+  opacity: 1;
+}
+
+.input-comment::placeholder {
+
+  padding-left: 15px;
+  padding-top: 15px;
+
+  color: #444444;
+
+  opacity: 0.5;
+}
+
+.modal-eror::placeholder {
+  color: #e74246;
+}
+
 .write-us .button {
   width: 260px;
 }
 
+
+@keyframes bounce {
+  0% {transform: translateY(-2000px);}
+  70% {transform: translateY(30px);}
+  90% {transform: translateY(-10px);}
+  100% {transform: translateY(0);}
+}
+
 .modal-show {
   display: block;
+  animation-name: bounce;
+  animation-duration: 0.6s;
 }
