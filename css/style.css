@@ -176,6 +176,7 @@ input[type="radio"].visually-hidden {
   position: relative;
 
   display: inline-block;
+  vertical-align: top;
   width: 18px;
   height: 18px;
   padding: 8px;
@@ -400,6 +401,7 @@ input[type="radio"].visually-hidden {
   line-height: 18px;
   font-weight: 500;
   text-transform: uppercase;
+  text-align: center;
 
   color: #ffffff;
 
@@ -627,7 +629,7 @@ input[type="radio"].visually-hidden {
   opacity: 0.1;
 }
 
-iframe {
+.map iframe {
   width: 100%;
 }
 
@@ -1151,7 +1153,8 @@ iframe {
   background-color: #eeeeee;
 }
 
-.details header {
+.details a {
+  display: block;
   margin-top: 21px;
   margin-bottom: 14px;
   font-size: 18px;
@@ -1274,18 +1277,9 @@ iframe {
   color: #444444;
 }
 
-@keyframes snake {
-  0%, 100% {transform: translateX(0);}
-  10%, 30%, 50%, 70%, 90% {transform: translateX(-10px);}
-  20%, 40%, 60%, 80% {transform: translateX(10px);}
-}
-
 .modal-error {
   border: 2px solid #e74246;
   color: #e74246;
-
-  animation-name: snake;
-  animation-duration: 0.6s;
 }
 
 .modal h2 {
@@ -1328,8 +1322,8 @@ iframe {
 
 .modal-close {
   position: absolute;
-  top: 130px;
-  right: 50px;
+  top: 78px;
+  right: 92px;
 
   width: 21px;
   height: 21px;
@@ -1376,7 +1370,7 @@ iframe {
   opacity: 1;
 }
 
-.input-comment::placeholder {
+.comment::placeholder {
 
   padding-left: 15px;
   padding-top: 15px;
@@ -1394,16 +1388,6 @@ iframe {
   width: 260px;
 }
 
-
-@keyframes bounce {
-  0% {transform: translateY(-2000px);}
-  71% {transform: translateY(30px);}
-  90% {transform: translateY(-10px);}
-  100% {transform: translateY(0);}
-}
-
 .modal-show {
   display: block;
-  animation-name: bounce;
-  animation-duration: 0.6s;
 }
